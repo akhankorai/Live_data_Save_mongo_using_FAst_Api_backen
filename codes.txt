@@ -1,0 +1,23 @@
+feature_cols = [
+    "fee",
+    "has_photo",
+    "pets_allowed",
+    "cityname",
+    "state",
+    "geo_cluster",
+    "amenity_group",
+    "bath_bed_ratio",
+    "total_rooms",
+    "bed_sqft_interaction",
+    "bath_sqft_interaction",
+    "longitude",
+    "square_feet",
+    "latitude",
+]
+//////////////////////////////////////////////////////////
+
+df_for_model["amenity_group"] = df_for_model["amenities"].apply(map_amenity)
+df_for_model["bath_bed_ratio"] = df_for_model["bathrooms"] / (df_for_model["bedrooms"] + 1)
+df_for_model["total_rooms"] = df_for_model["bedrooms"] + df_for_model["bathrooms"]
+df_for_model["bed_sqft_interaction"] = df_for_model["bedrooms"] * df["square_feet"]
+df_for_model["bath_sqft_interaction"] = df_for_model["bathrooms"] * df["square_feet"]
